@@ -11,8 +11,12 @@ export const useThemeMode = () => {
 	const themeToggler = () => (theme === 'dark' ? setMode('light') : setMode('dark'))
 
 	useEffect(() => {
+		themeToggler()
+	}, [])
+
+	useEffect(() => {
 		const localTheme = window.localStorage.getItem('theme')
-		localTheme ? setTheme(localTheme) : window.localStorage.setItem('theme', 'light')
+		localTheme && setTheme(localTheme)
 	}, [])
 
 	return { theme, themeToggler }

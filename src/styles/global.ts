@@ -7,6 +7,7 @@ type GlobalThemeProps = {
 
 const GlobalStyle = createGlobalStyle`
 	body {
+		background-color: #d1d7e1;
 		margin: 0;
 		padding: 0;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
