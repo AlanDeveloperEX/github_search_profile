@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled, { css } from 'styled-components'
-import tw from 'tailwind.macro'
 import { UserProps } from '../../models/users'
 import { api } from '../../services/api'
 import { toast } from 'react-toastify'
@@ -10,23 +8,8 @@ import CardItem from '../../components/layout/CardItem'
 import { motion, AnimatePresence } from 'framer-motion'
 import Modal from '../../components/layout/Modal'
 import { RiCloseCircleFill } from 'react-icons/ri'
-
-const Container = styled.div`
-	${tw`font-mono text-blue-700 flex w-100 items-center flex-col justify-center p-3`}
-
-	max-width: 1280px;
-	margin: 0 auto;
-`
-
-const H1 = styled.h1`
-	${tw`p-4 my-4 border-l-4 border-gray-300 bg-gray-50`}
-	${({ theme }) => css`
-		background: #262728;
-		color: #fff;
-		text-align: center;
-		border-radius: 8px;
-	`}
-`
+import * as S from './styles'
+import Search from './components/Search'
 
 const Landing: React.FC = () => {
 	const [dataUsers, setDataUsers] = useState([])
@@ -67,14 +50,10 @@ const Landing: React.FC = () => {
 		}
 	}
 
-	useEffect(() => {
-		loadUser('AlanDeveloper')
-	}, [])
-
 	return (
-		<Container>
-			<H1>Busque pelo seu usuário:</H1>
-			<Controls.Input className='max-50' />
+		<S.Container>
+			<S.H1>Busque pelo seu usuário:</S.H1>
+			<Search loadUser={loadUser} />
 
 			{isLoading ? (
 				<>
@@ -111,11 +90,12 @@ const Landing: React.FC = () => {
 									.filter((item: UserProps) => item.login === selectedId)
 									.map((item: any, key: number) => (
 										<Modal key={key}>
-											<motion.div layoutId={selectedId}>
-												<motion.h5>{item.login}</motion.h5>
-
-												<RiCloseCircleFill onClick={() => setSelectedId(null)} />
-											</motion.div>
+											<S.ModalShape>
+												<motion.div layoutId={selectedId}>
+													<motion.h5>{item.login}</motion.h5>
+													<RiCloseCircleFill onClick={() => setSelectedId(null)} />
+												</motion.div>
+											</S.ModalShape>
 										</Modal>
 									))}
 							</>
@@ -123,7 +103,7 @@ const Landing: React.FC = () => {
 					</AnimatePresence>
 				</>
 			)}
-		</Container>
+		</S.Container>
 	)
 }
 
