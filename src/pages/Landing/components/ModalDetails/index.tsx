@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { UserProps } from '../../../../models/users'
@@ -16,6 +15,8 @@ type UserProfileProps = {
 	avatar_url: string
 	login: string
 	location: string
+	email: string
+	public_repos: number
 }
 
 const ModalDetails: React.FC<ModalDetailsProps> = ({ data }) => {
@@ -58,6 +59,8 @@ const ModalDetails: React.FC<ModalDetailsProps> = ({ data }) => {
 						<S.ModalTitle>{dataUser.name}</S.ModalTitle>
 						<S.ImgStyled src={dataUser.avatar_url} />
 						<S.InfosStyled>{dataUser.location}</S.InfosStyled>
+						<S.InfosStyled>{dataUser.email}</S.InfosStyled>
+						<S.InfosStyled>Reposittories: {dataUser.public_repos}</S.InfosStyled>
 						<S.InfosStyled>{dataUser.bio}</S.InfosStyled>
 					</S.ContainerDetais>
 				)
