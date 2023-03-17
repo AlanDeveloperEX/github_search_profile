@@ -28,5 +28,6 @@ export const ModalShape = styled.div`
 		justify-content: center;
 		align-items: center;
 		border-radius: 10px;
+		position: relative;
 	`}
 `

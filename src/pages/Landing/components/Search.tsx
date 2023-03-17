@@ -1,6 +1,7 @@
 import React, { useState, KeyboardEvent } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import Controls from '../../../components/global/Controls'
+import * as S from './styles'
 
 type SearchProps = {
 	loadUser: (userName: string) => Promise<void>
@@ -16,7 +17,7 @@ const Search = ({ loadUser }: SearchProps) => {
 	}
 
 	return (
-		<>
+		<S.ContainerSearch>
 			<Controls.Input
 				type='text'
 				onChange={(e: any) => setUserName(e.target.value)}
@@ -27,7 +28,7 @@ const Search = ({ loadUser }: SearchProps) => {
 			<button onClick={() => loadUser(userName)}>
 				<BsSearch />
 			</button>
-		</>
+		</S.ContainerSearch>
 	)
 }
 

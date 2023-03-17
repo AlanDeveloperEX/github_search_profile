@@ -93,7 +93,15 @@ const Landing: React.FC = () => {
 											<S.ModalShape>
 												<motion.div layoutId={selectedId}>
 													<motion.h5>{item.login}</motion.h5>
-													<RiCloseCircleFill onClick={() => setSelectedId(null)} />
+													<RiCloseCircleFill
+														style={{
+															position: 'absolute',
+															top: '1rem',
+															right: '1rem',
+															cursor: 'pointer',
+														}}
+														onClick={() => setSelectedId(null)}
+													/>
 												</motion.div>
 											</S.ModalShape>
 										</Modal>
