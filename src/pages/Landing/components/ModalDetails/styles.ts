@@ -8,6 +8,7 @@ export const ModalTitle = styled.h2`
 		color: #fff;
 		text-align: center;
 		border-radius: 8px;
+		margin: 1rem auto;
 	`}
 `
 
