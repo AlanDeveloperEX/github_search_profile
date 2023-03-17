@@ -11,6 +11,11 @@ export const CardStyled = styled.div`
 	background-color: #262728;
 	border-radius: 8px;
 	padding: 0.7rem;
+	cursor: pointer;
+
+	&.link {
+		cursor: pointer;
+	}
 
 	@media (max-width: 820px) {
 	}

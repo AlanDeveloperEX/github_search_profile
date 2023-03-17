@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { UserProps } from '../../models/users'
 import { api } from '../../services/api'
 import { toast } from 'react-toastify'
-import Controls from '../../components/global/Controls'
 import GridCards from '../../components/layout/GridCards'
 import CardItem from '../../components/layout/CardItem'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -21,22 +20,12 @@ const Landing: React.FC = () => {
 	const loadUser = async function (userName: string) {
 		setDataUsers([])
 		setIsLoading(true)
-		const queryString: any = 'users?q=' + encodeURIComponent(userName)
+		const queryString: string = 'users?q=' + encodeURIComponent(userName)
 
 		try {
 			const { data } = await api.get('search/' + queryString)
 
 			if (data.total_count > 0 || data.incomplete_results) {
-				// const { avatar_url, login, location, followers, following } = data
-
-				// const userData: UserProps = {
-				// 	avatar_url,
-				// 	login,
-				// 	location,
-				// 	followers,
-				// 	following,
-				// }
-
 				setDataUsers(data.items)
 			} else {
 				toast.error('Usuário não encontrado, tente novamente', {
@@ -74,13 +63,7 @@ const Landing: React.FC = () => {
 											setSelectedId(item.login)
 										}}
 									>
-										<CardItem
-											key={key}
-											avatar_url={item.avatar_url}
-											login={item.login}
-											followers={item.followers}
-											following={item.following}
-										/>
+										<CardItem key={key} avatar_url={item.avatar_url} login={item.login} />
 									</motion.div>
 								</div>
 							))}

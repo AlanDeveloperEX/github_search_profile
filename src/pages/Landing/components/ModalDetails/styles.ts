@@ -24,3 +24,36 @@ export const ModalShape = styled.div`
 		position: relative;
 	`}
 `
+
+export const ContainerDetais = styled.div`
+	${tw``}
+
+	display: flex;
+	flex-direction: column;
+
+	@media (max-width: 820px) {
+	}
+`
+
+export const ImgStyled = styled.img`
+	${tw``}
+
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto;
+	overflow: hidden;
+
+	@media (max-width: 820px) {
+		width: 120px;
+		height: 120px;
+	}
+`
+
+export const InfosStyled = styled.h3`
+	${tw``}
+	text-align: center;
+	font-size: 1rem;
+	@media (max-width: 820px) {
+	}
+`
