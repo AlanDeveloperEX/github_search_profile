@@ -1,5 +1,5 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const apiJsonServer = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL_BACKEND_SERVER,
-});
+export const api = axios.create({
+	baseURL: process.env.REACT_APP_API_URL,
+})
