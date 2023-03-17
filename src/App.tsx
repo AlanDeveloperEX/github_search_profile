@@ -1,24 +1,24 @@
 import React from 'react'
-import { createGlobalStyle } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import ThemeContext from './contexts/ThemeContext'
+import useThemeMode from './hooks/useThemeMode'
+import { lightTheme, darkTheme } from './styles/themes'
+import GlobalStyle from './styles/global'
 import Landing from './pages/Landing'
 
-const GlobalStyle = createGlobalStyle`
-	body {
-		margin: 0;
-		padding: 0;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		font-size: 20px;
-	}
-`
-
 const App: React.FC = () => {
+	const { theme } = useThemeMode()
+	const themeMode = theme === 'light' ? lightTheme : darkTheme
+
 	return (
-		<main>
-			<GlobalStyle />
-			<Landing />
-		</main>
+		<ThemeContext>
+			<ThemeProvider theme={themeMode}>
+				<main>
+					<GlobalStyle />
+					<Landing />
+				</main>
+			</ThemeProvider>
+		</ThemeContext>
 	)
 }
 
