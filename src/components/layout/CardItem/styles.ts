@@ -8,7 +8,7 @@ export const CardStyled = styled.div`
 	flex-direction: column;
 	flex-wrap: wrap;
 	overflow: hidden;
-	background-color: #2c3441;
+	background-color: #262728;
 	border-radius: 8px;
 	padding: 0.7rem;
 
@@ -25,6 +25,16 @@ export const ImgStyled = styled.img`
 	margin: 0 auto;
 	overflow: hidden;
 
+	@media (max-width: 820px) {
+		width: 120px;
+		height: 120px;
+	}
+`
+
+export const TitleStyled = styled.h2`
+	${tw``}
+
+	font-size: 1rem;
 	@media (max-width: 820px) {
 	}
 `

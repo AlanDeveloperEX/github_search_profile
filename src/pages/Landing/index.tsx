@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 import tw from 'tailwind.macro'
-import { UserProps } from '../models/users'
-import { api } from '../services/api'
+import { UserProps } from '../../models/users'
+import { api } from '../../services/api'
 import { toast } from 'react-toastify'
-import Controls from '../components/global/Controls'
-import GridCards from '../components/layout/GridCards'
-import CardItem from '../components/layout/CardItem'
+import Controls from '../../components/global/Controls'
+import GridCards from '../../components/layout/GridCards'
+import CardItem from '../../components/layout/CardItem'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Container = styled.div`
 	${tw`font-mono text-blue-700 flex w-100 items-center flex-col justify-center p-3`}
@@ -18,15 +19,17 @@ const Container = styled.div`
 const H1 = styled.h1`
 	${tw`p-4 my-4 border-l-4 border-gray-300 bg-gray-50`}
 	${({ theme }) => css`
-		background: #2c3441;
+		background: #262728;
 		color: #fff;
 		text-align: center;
+		border-radius: 8px;
 	`}
 `
 
 const Landing: React.FC = () => {
 	const [dataUsers, setDataUsers] = useState([])
 	const [isLoading, setIsLoading] = useState(false)
+	const [selectedId, setSelectedId] = useState(null)
 
 	const loadUser = async function (userName: string) {
 		setDataUsers([])
@@ -66,7 +69,8 @@ const Landing: React.FC = () => {
 		loadUser('AlanDeveloper')
 	}, [])
 
-	console.log(dataUsers)
+	// console.log(dataUsers)
+	console.log(selectedId)
 
 	return (
 		<Container>
@@ -78,6 +82,57 @@ const Landing: React.FC = () => {
 					<p>Loading</p>
 				</>
 			) : (
+				<>
+					<GridCards>
+						{dataUsers &&
+							dataUsers.length > 0 &&
+							dataUsers.map((item: any, key: number) => (
+								<div key={key}>
+									<motion.div
+										layoutId={item.login}
+										onClick={() => {
+											console.log(item.login)
+											setSelectedId(item.login)
+										}}
+									>
+										<CardItem
+											key={key}
+											avatar_url={item.avatar_url}
+											login={item.login}
+											followers={item.followers}
+											following={item.following}
+										/>
+									</motion.div>
+									{/* <AnimatePresence>
+									{selectedId && (
+										<motion.div layoutId={selectedId}>
+											<motion.h5>{item.login}</motion.h5>
+
+											<motion.button onClick={() => setSelectedId(null)} />
+										</motion.div>
+									)}
+								</AnimatePresence> */}
+								</div>
+							))}
+					</GridCards>
+					<AnimatePresence>
+						{selectedId && (
+							<>
+								{dataUsers
+									.filter((item: any) => item.login === selectedId)
+									.map((item: any, key: number) => (
+										<motion.div key={key} layoutId={selectedId}>
+											<motion.h5>{'Test' + item.login}</motion.h5>
+
+											<motion.button onClick={() => setSelectedId(null)} />
+										</motion.div>
+									))}
+							</>
+						)}
+					</AnimatePresence>
+				</>
+			)}
+			{/* ) : (
 				<GridCards>
 					{dataUsers &&
 						dataUsers.length > 0 &&
@@ -91,7 +146,7 @@ const Landing: React.FC = () => {
 							/>
 						))}
 				</GridCards>
-			)}
+			)} */}
 		</Container>
 	)
 }

@@ -8,9 +8,9 @@ const CardItem: React.FC<UserProps> = (props) => {
 	return (
 		<S.CardStyled>
 			<S.ImgStyled src={avatar_url} />
-			<div>{login}</div>
-			<div>{followers}</div>
-			<div>{following}</div>
+			<S.TitleStyled>{login}</S.TitleStyled>
+			{/* <div>{followers}</div>
+			<div>{following}</div> */}
 		</S.CardStyled>
 	)
 }

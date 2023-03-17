@@ -12,11 +12,13 @@ export const useThemeMode = () => {
 
 	useEffect(() => {
 		themeToggler()
+		// eslint-disable-next-line
 	}, [])
 
 	useEffect(() => {
 		const localTheme = window.localStorage.getItem('theme')
 		localTheme && setTheme(localTheme)
+		// eslint-disable-next-line
 	}, [])
 
 	return { theme, themeToggler }

@@ -13,7 +13,7 @@ export const Input = styled.input`
 		max-width: 50%;
 
 		@media (max-width: 820px) {
-			max-width: 100%;
+			max-width: 98%;
 		}
 	}
 `
