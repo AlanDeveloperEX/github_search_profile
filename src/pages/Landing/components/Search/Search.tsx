@@ -1,6 +1,6 @@
 import React, { useState, KeyboardEvent } from 'react'
 import { BsSearch } from 'react-icons/bs'
-import Controls from '../../../components/global/Controls'
+import Controls from '../../../../components/global/Controls'
 import * as S from './styles'
 
 type SearchProps = {

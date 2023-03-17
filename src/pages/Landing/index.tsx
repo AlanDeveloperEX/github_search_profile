@@ -9,7 +9,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Modal from '../../components/layout/Modal'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import * as S from './styles'
-import Search from './components/Search'
+import Search from './components/Search/Search'
+import ModalDetails from './components/ModalDetails'
+import DefaultProfile from './../../assets/profile.jpg'
 
 const Landing: React.FC = () => {
 	const [dataUsers, setDataUsers] = useState([])
@@ -92,13 +94,14 @@ const Landing: React.FC = () => {
 										<Modal key={key}>
 											<S.ModalShape>
 												<motion.div layoutId={selectedId}>
-													<motion.h5>{item.login}</motion.h5>
+													<ModalDetails data={item} />
 													<RiCloseCircleFill
 														style={{
 															position: 'absolute',
 															top: '1rem',
 															right: '1rem',
 															cursor: 'pointer',
+															fontSize: '30px',
 														}}
 														onClick={() => setSelectedId(null)}
 													/>
@@ -110,6 +113,9 @@ const Landing: React.FC = () => {
 						)}
 					</AnimatePresence>
 				</>
+			)}
+			{!isLoading && dataUsers && dataUsers.length === 0 && (
+				<CardItem avatar_url={DefaultProfile} login={'Ninguém'} />
 			)}
 		</S.Container>
 	)
