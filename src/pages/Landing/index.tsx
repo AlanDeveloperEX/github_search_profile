@@ -9,6 +9,7 @@ import GridCards from '../../components/layout/GridCards'
 import CardItem from '../../components/layout/CardItem'
 import { motion, AnimatePresence } from 'framer-motion'
 import Modal from '../../components/layout/Modal'
+import { RiCloseCircleFill } from 'react-icons/ri'
 
 const Container = styled.div`
 	${tw`font-mono text-blue-700 flex w-100 items-center flex-col justify-center p-3`}
@@ -112,7 +113,8 @@ const Landing: React.FC = () => {
 										<Modal key={key}>
 											<motion.div layoutId={selectedId}>
 												<motion.h5>{item.login}</motion.h5>
-												<motion.button onClick={() => setSelectedId(null)} />
+
+												<RiCloseCircleFill onClick={() => setSelectedId(null)} />
 											</motion.div>
 										</Modal>
 									))}
