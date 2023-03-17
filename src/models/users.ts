@@ -1,5 +1,5 @@
 export type UsersProps = {
-	items: UserProps[]
+	items?: UserProps[]
 }
 
 export type UserProps = {
