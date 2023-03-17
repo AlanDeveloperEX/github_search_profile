@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
-import { UsersProps, UserProps } from '../models/users'
+import { UserProps } from '../models/users'
 import { api } from '../services/api'
 import { toast } from 'react-toastify'
 
@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 
 const Landing: React.FC = () => {
-	const [dataUsers, setDataUsers] = useState<any>([])
+	const [dataUsers, setDataUsers] = useState([])
 	const [isLoading, setIsLoading] = useState(false)
 
 	const loadUser = async function (userName: string) {
