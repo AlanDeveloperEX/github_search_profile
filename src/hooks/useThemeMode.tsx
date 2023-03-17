@@ -12,7 +12,7 @@ export const useThemeMode = () => {
 
 	useEffect(() => {
 		const localTheme = window.localStorage.getItem('theme')
-		localTheme && setTheme(localTheme)
+		localTheme ? setTheme(localTheme) : window.localStorage.setItem('theme', 'light')
 	}, [])
 
 	return { theme, themeToggler }
