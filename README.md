@@ -1,5 +1,7 @@
 # About Project
 
+<img width="100%" src="https://drive.google.com/file/d/1Enjl6MNCcD5gSn_rYT73pLNcNnNk5OpF/view?usp=sharing">
+
 Simple way to search and see a summary of users from the search.
 
 You can interact with the search entry and search for the names of your favorite developers on github.
