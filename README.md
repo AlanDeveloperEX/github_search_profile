@@ -1,6 +1,6 @@
 # About Project
 
-<img width="100%" src="https://drive.google.com/file/d/1Enjl6MNCcD5gSn_rYT73pLNcNnNk5OpF/view?usp=sharing">
+<img width="100%" src="https://i.ibb.co/WzSfmhF/searching.jpg">
 
 Simple way to search and see a summary of users from the search.
 
